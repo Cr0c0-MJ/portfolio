@@ -1,0 +1,21 @@
+# dependencies
+node_modules
+**/node_modules
+
+# build outputs
+apps/web/.next
+apps/api/dist
+**/dist
+
+# local env
+.env
+.env.local
+.env.*.local
+
+# dev tools
+.git
+.github
+**/.turbo
+
+# misc
+**/*.log
