@@ -1,0 +1,28 @@
+http:
+  routers:
+    web:
+      rule: "Host(`crocoportfolio.com`) || Host(`www.crocoportfolio.com`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: le
+      service: web
+
+    api:
+      rule: "Host(`api.crocoportfolio.com`)"
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: le
+      service: api
+
+  services:
+    web:
+      loadBalancer:
+        servers:
+          - url: "http://web:3000"
+
+    api:
+      loadBalancer:
+        servers:
+          - url: "http://api:4000"
