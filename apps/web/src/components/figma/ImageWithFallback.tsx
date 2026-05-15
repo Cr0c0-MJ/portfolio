@@ -21,6 +21,7 @@ export function ImageWithFallback({ src, alt, className }: ImageWithFallbackProp
   }
 
   return (
+    // eslint-disable-next-line @next/next/no-img-element
     <img
       src={src}
       alt={alt}

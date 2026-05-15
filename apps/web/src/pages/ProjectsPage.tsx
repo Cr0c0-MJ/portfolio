@@ -114,7 +114,7 @@ export function ProjectsPage() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-center text-gray-300 mb-12 max-w-3xl mx-auto"
         >
-          Thanks for stopping by. Below is a collection of {projects.length} public projects I've
+          Thanks for stopping by. Below is a collection of {projects.length} public projects I&apos;ve
           worked on since 2010. Each one was a step in my journey, and every one taught me something
           new.
         </motion.p>

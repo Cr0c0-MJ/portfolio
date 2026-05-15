@@ -11,8 +11,8 @@ concurrency:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_WEB: ${{ github.repository_owner }}/portfolio-web
-  IMAGE_API: ${{ github.repository_owner }}/portfolio-api
+  IMAGE_WEB: cr0c0-mj/portfolio-web
+  IMAGE_API: cr0c0-mj/portfolio-api
 
 jobs:
   build-and-push:

@@ -63,8 +63,8 @@ export function ContactPage() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-center text-gray-300 mb-16 max-w-3xl mx-auto"
         >
-          Have a question or want to discuss something? I'd love to hear from you and see how I can
-          help. Whether it's about a project, collaboration, or just a friendly chat.
+          Have a question or want to discuss something? I&apos;d love to hear from you and see how I can
+          help. Whether it&apos;s about a project, collaboration, or just a friendly chat.
         </motion.p>
 
         {/* How To Connect Section */}
@@ -92,7 +92,7 @@ export function ContactPage() {
             className="mb-12"
           >
             <h2 className="text-white mb-2">How To Connect</h2>
-            <p className="text-gray-400 text-sm">Let's start a conversation one day.</p>
+            <p className="text-gray-400 text-sm">Let&apos;s start a conversation one day.</p>
           </motion.div>
 
           {/* Contact Methods Grid */}

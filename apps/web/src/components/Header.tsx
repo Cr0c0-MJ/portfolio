@@ -27,7 +27,7 @@ export function Header() {
       <div className="flex items-center justify-between px-8 py-6">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <span className="text-amber-500">Croco's</span>
+          <span className="text-amber-500">Croco&apos;s</span>
           <span>Portfolio</span>
         </div>
 
