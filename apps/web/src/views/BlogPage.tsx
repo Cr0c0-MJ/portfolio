@@ -118,7 +118,7 @@ export function BlogPage() {
           className="text-center mb-8"
         >
           <h1 className="text-emerald-400 mb-4">Blog / {blogPosts.length} Articles</h1>
-          <div className="flex items-center justify-center gap-2 text-gray-400 text-sm">
+          <div className="flex items-center justify-center gap-2 text-muted-foreground text-sm">
             <span>HOME</span>
             <span>/</span>
             <span className="text-emerald-400">BLOG</span>
@@ -130,7 +130,7 @@ export function BlogPage() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-center text-gray-300 mb-12 max-w-3xl mx-auto"
+          className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto"
         >
           Thoughts on development, design, and technology. Sharing insights from building products,
           solving problems, and learning along the way.
@@ -148,7 +148,7 @@ export function BlogPage() {
             className={`px-4 py-2 rounded-lg transition-all ${
               selectedCategory === 'All'
                 ? 'bg-emerald-500 text-white'
-                : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
+                : 'bg-muted/50 text-muted-foreground hover:bg-accent hover:text-foreground'
             }`}
           >
             All Articles ({blogPosts.length})
@@ -162,7 +162,7 @@ export function BlogPage() {
                 className={`px-4 py-2 rounded-lg transition-all ${
                   selectedCategory === category
                     ? 'bg-emerald-500 text-white'
-                    : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
+                    : 'bg-muted/50 text-muted-foreground hover:bg-accent hover:text-foreground'
                 }`}
               >
                 {category} ({count})
@@ -188,7 +188,7 @@ export function BlogPage() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-center text-gray-400 py-12"
+            className="text-center text-muted-foreground py-12"
           >
             No articles found in this category.
           </motion.div>
