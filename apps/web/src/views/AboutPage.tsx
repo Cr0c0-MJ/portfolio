@@ -14,7 +14,7 @@ export function AboutPage() {
           className="text-center mb-8"
         >
           <h1 className="text-emerald-400 mb-4">About</h1>
-          <div className="flex items-center justify-center gap-2 text-gray-400 text-sm">
+          <div className="flex items-center justify-center gap-2 text-muted-foreground text-sm">
             <span>HOME</span>
             <span>/</span>
             <span className="text-emerald-400">ABOUT</span>
@@ -26,9 +26,11 @@ export function AboutPage() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-center text-gray-300 mb-16 max-w-3xl mx-auto"
+          className="text-center text-muted-foreground mb-16 max-w-3xl mx-auto"
         >
-          안녕하세요, 저는 Croco입니다 — 깊은 사고와 실용적이고 실제로 작동하는 소프트웨어를 만드는 것을 즐기는 소프트웨어 엔지니어입니다.
+          안녕하세요, 저는 Croco입니다.
+          <br></br>
+          프론트엔드, 백엔드, 인프라를 넘나드는 풀스택 엔지니어이자, AI를 실무에 깊이 녹여낼 줄 아는 개발자입니다.
         </motion.p>
 
         {/* Who I Am Section */}
@@ -38,34 +40,34 @@ export function AboutPage() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mb-8"
         >
-          <h2 className="text-white mb-2">Who I Am</h2>
-          <p className="text-gray-400 text-sm mb-8">My story and background.</p>
+          <h2 className="text-foreground mb-2">자기 소개</h2>
+          <p className="text-muted-foreground text-sm mb-8">안녕하세요. 저를 소개하자면</p>
 
           {/* Overview Tab */}
           <div className="border-l-2 border-emerald-500 pl-6 mb-6">
             <div className="flex items-center gap-2 text-emerald-400 mb-4">
               <User className="w-4 h-4" />
-              <span>Overview</span>
+              <span>프로젝트 전반을 이해하는 개발자</span>
             </div>
 
-            <div className="space-y-4 text-gray-300 leading-relaxed">
+            <div className="space-y-4 text-foreground/80 leading-relaxed">
               <p>
-                저는 호기심 많은 사람이자 문제 해결사입니다. 기술에 대한 깊은 열정으로 움직이며, 
-                어린 나이부터 프로그래밍에 빠져들었습니다. 매혹적인 컴퓨터를 상상력에 맞춰 구부리려고 
-                노력하면서, 그 호기심은 빠르게 소프트웨어 엔지니어링과 제품 개발에 대한 평생의 헌신으로 발전했습니다.
+                저는 프론트엔드부터 백엔드, 인프라 구축, 배포 자동화까지 제품의 전 과정을 혼자 끌어갈 수 있는
+                풀스택 소프트웨어 엔지니어입니다. 팀의 규모나 역할 경계에 구애받지 않고, 필요한 곳에서
+                필요한 역할을 맡는 1인 다역에 익숙합니다.
               </p>
 
               <p>
-                그 이후로 코딩은 무한한 창의성을 위한 제가 가장 좋아하는 놀이터가 되었습니다. 
-                오늘날, 제 작업은 글로벌한 범위를 가지고 있습니다. 암스테르담과 바르셀로나를 기반으로 하면서 
-                유럽 전역의 팀들과 긴밀히 협력하고 있으며, 제 영향력은 미국과 중동의 강력한 파트너십으로 확장됩니다.
+                UI 설계부터 API 개발, DB 모델링, CI/CD 파이프라인, 서버 운영까지 — 하나의 아이디어가
+                실제 서비스로 이어지는 전체 흐름을 이해하고 실행할 수 있다는 것이 제 가장 큰 강점입니다.
+                단순히 코드를 짜는 것을 넘어, 제품이 어떻게 동작하고 어디서 무너지는지를 입체적으로 파악합니다.
               </p>
 
               <p>
-                이러한 국제적 관점은 레바논-스페인 배경과 디지털 노마드 라이프스타일에 깊이 뿌리를 두고 있습니다. 
-                환경에 관계없이 성공을 정의하는 보편적인 패턴을 볼 수 있도록 가르쳐주었으며, 
-                지금은 지속적인 진정한 영향을 만드는 데 초점을 맞춘 최첨단 기술을 구축하는 팀을 
-                역량 강화하는 데 그 관점을 활용하고 있습니다. 이 사이트는 그 여정의 작은 창입니다.
+                여기에 더해, AI 도구를 적극적으로 활용하는 엔지니어입니다. LLM을 단순한 보조 도구가 아닌
+                개발 워크플로우의 핵심 파트너로 삼아, 설계·구현·검증 전 단계에서 활용합니다.
+                빠르게 변하는 AI 생태계 속에서 실질적인 가치를 만들어낼 줄 아는 것, 그것이 지금 제가
+                가장 집중하고 있는 경쟁력입니다.
               </p>
             </div>
           </div>

@@ -11,69 +11,42 @@ interface Project {
   description: string;
   image: string;
   technologies: string[];
-  badge: number;
+  link: string;
 }
 
 const projects: Project[] = [
   {
     id: 1,
-    title: 'AI Integration Platform',
-    date: 'October 2023',
-    category: 'Web App, SDK, API, Website, Docs',
-    description: 'A plug-and-play platform for integrating an AI-powered voice user interface (VUI) directly on top of existing applications. It is designed...',
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop',
-    technologies: ['React', 'TypeScript', 'Node.js', 'LangChain', 'FastMCP', 'PineconeDB'],
-    badge: 31,
+    title: 'Zooflix',
+    date: 'February 2024',
+    category: 'Web App, FinTech',
+    description: '구독 경제 모델을 주식 투자에 접목한 플랫폼. 한국투자증권 API를 활용한 월별 자동 주식 매수, AI 기반 외국어 뉴스 번역·음성 합성, 주가 예측 커뮤니티 및 랭킹 기능을 제공합니다.',
+    image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=600&fit=crop',
+    technologies: ['React', 'TypeScript', 'Spring Boot', 'MySQL', 'Docker', 'AWS', 'Jenkins'],
+
+    link: 'https://github.com/Cr0c0-MJ/Zooflix',
   },
   {
     id: 2,
-    title: 'AI Sales Agent for Shopify',
-    date: 'July 2025',
-    category: 'Shopify App',
-    description: 'A native app for Shopify stores that can be installed in minutes, delivering an assistant experience directly inside the merchant...',
-    image: 'https://images.unsplash.com/photo-1661956602116-aa6865609028?w=800&h=600&fit=crop',
-    technologies: ['NextJS', 'OpenAI', 'GraphQL', 'Shopify API'],
-    badge: 29,
+    title: 'Shortorial',
+    date: 'April 2024',
+    category: 'Web App, AI',
+    description: '모션 인식 기반 댄스 학습 서비스. MediaPipe BlazePose를 활용한 실시간 포즈 유사도 분석으로 동작 정확도를 즉시 피드백하고, 챌린지 영상을 YouTube에 바로 업로드할 수 있습니다.',
+    image: 'https://images.unsplash.com/photo-1535525153412-5a42439a210d?w=800&h=600&fit=crop',
+    technologies: ['React', 'TypeScript', 'Spring Boot', 'Python', 'MediaPipe', 'MySQL', 'Redis'],
+
+    link: 'https://github.com/Cr0c0-MJ/Shortorial',
   },
   {
     id: 3,
-    title: 'AI Browsing Assistant',
-    date: 'February 2024',
-    category: 'Browser Extension',
-    description: 'A browser extension that brings voice control and AI-powered assistance to your web browsing experience. This tool transforms...',
-    image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=600&fit=crop',
-    technologies: ['Plasmo', 'Ant Design', 'OpenAI', 'Chrome API'],
-    badge: 18,
-  },
-  {
-    id: 4,
-    title: 'E-commerce Dashboard',
-    date: 'March 2024',
-    category: 'Web App',
-    description: 'A comprehensive analytics dashboard for e-commerce businesses with real-time data visualization and insights...',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
-    technologies: ['React', 'TypeScript', 'GraphQL', 'D3.js'],
-    badge: 24,
-  },
-  {
-    id: 5,
-    title: 'Mobile Fitness Tracker',
+    title: 'ConGraduation',
     date: 'January 2024',
-    category: 'Mobile App',
-    description: 'A React Native mobile application for tracking workouts, nutrition, and health metrics with personalized AI coaching...',
-    image: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=800&h=600&fit=crop',
-    technologies: ['React Native', 'Node.js', 'MongoDB', 'OpenAI'],
-    badge: 15,
-  },
-  {
-    id: 6,
-    title: 'Content Management System',
-    date: 'December 2023',
-    category: 'Web App, CMS',
-    description: 'A headless CMS built with modern technologies, offering flexible content modeling and powerful API...',
-    image: 'https://images.unsplash.com/photo-1432821596592-e2c18b78144f?w=800&h=600&fit=crop',
-    technologies: ['NextJS', 'PostgreSQL', 'GraphQL', 'Prisma'],
-    badge: 28,
+    category: 'Web App',
+    description: '졸업을 축하하는 온라인 사진 롤링페이퍼 서비스. 4컷 형식의 졸업 사진에 메시지를 담아 친구들과 추억을 공유하고, 졸업 당일 이후 열람 및 ZIP 다운로드가 가능합니다.',
+    image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=600&fit=crop',
+    technologies: ['React', 'Spring Boot', 'MySQL', 'AWS S3', 'WebSocket', 'Docker'],
+
+    link: 'https://github.com/Cr0c0-MJ/congraduation',
   },
 ];
 
@@ -100,7 +73,7 @@ export function ProjectsPage() {
           className="text-center mb-8"
         >
           <h1 className="text-emerald-400 mb-4">Projects</h1>
-          <div className="flex items-center justify-center gap-2 text-gray-400 text-sm">
+          <div className="flex items-center justify-center gap-2 text-muted-foreground text-sm">
             <span>HOME</span>
             <span>/</span>
             <span className="text-emerald-400">PROJECTS</span>
@@ -112,11 +85,10 @@ export function ProjectsPage() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-center text-gray-300 mb-12 max-w-3xl mx-auto"
+          className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto"
         >
-          Thanks for stopping by. Below is a collection of {projects.length} public projects I&apos;ve
-          worked on since 2010. Each one was a step in my journey, and every one taught me something
-          new.
+          방문해 주셔서 감사합니다. 아래는 제가 진행한 {projects.length}개의 공개 프로젝트입니다.<br></br>
+          각각의 프로젝트는 성장의 발판이 되었고, 매번 새로운 것을 배우는 계기가 되었습니다.
         </motion.p>
 
         {/* Filter Tabs */}
@@ -131,7 +103,7 @@ export function ProjectsPage() {
             className={`px-4 py-2 rounded-lg transition-all ${
               selectedTech === 'All'
                 ? 'bg-emerald-500 text-white'
-                : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
+                : 'bg-muted/50 text-muted-foreground hover:bg-accent hover:text-foreground'
             }`}
           >
             All Projects ({projects.length})
@@ -145,7 +117,7 @@ export function ProjectsPage() {
                 className={`px-4 py-2 rounded-lg transition-all ${
                   selectedTech === tech
                     ? 'bg-emerald-500 text-white'
-                    : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
+                    : 'bg-muted/50 text-muted-foreground hover:bg-accent hover:text-foreground'
                 }`}
               >
                 {tech} ({count})
@@ -171,7 +143,7 @@ export function ProjectsPage() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-center text-gray-400 py-12"
+            className="text-center text-muted-foreground py-12"
           >
             No projects found with this technology.
           </motion.div>

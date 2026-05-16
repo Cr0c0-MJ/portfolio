@@ -49,7 +49,7 @@ export function HeroSection() {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="text-white mb-6 text-center"
+        className="text-foreground mb-6 text-center"
       >
         <span className="text-amber-500">Software</span> Engineer
       </motion.h2>

@@ -6,34 +6,18 @@ export function ContactPage() {
   const contactMethods = [
     {
       icon: Mail,
-      label: 'By Email',
-      value: 'croco@example.com',
+      label: '이메일',
+      value: 'croco9505@gmail.com',
       action: 'Send Email',
-      link: 'mailto:croco@example.com',
-      color: 'text-amber-500',
-    },
-    {
-      icon: Video,
-      label: 'Virtual Meeting',
-      value: 'Google Meet',
-      action: 'Schedule a Call',
-      link: '#',
-      color: 'text-amber-500',
-    },
-    {
-      icon: Phone,
-      label: 'By Phone or WhatsApp',
-      value: '(+82) 10 1234 5678',
-      action: 'Send Message',
-      link: 'tel:+821012345678',
+      link: 'https://mail.google.com/mail/?view=cm&to=croco9505@gmail.com',
       color: 'text-amber-500',
     },
     {
       icon: MapPin,
-      label: 'Physical Meeting',
-      value: 'Seoul, South Korea',
+      label: '현재 거주지',
+      value: '대한민국 인천광역시',
       action: 'View on Map',
-      link: '#',
+      link: 'https://www.google.com/maps/place/인천광역시/@37.4563, 126.7052,11z',
       color: 'text-amber-500',
     },
   ];
@@ -49,7 +33,7 @@ export function ContactPage() {
           className="text-center mb-8"
         >
           <h1 className="text-emerald-400 mb-4">Contact</h1>
-          <div className="flex items-center justify-center gap-2 text-gray-400 text-sm">
+          <div className="flex items-center justify-center gap-2 text-muted-foreground text-sm">
             <span>HOME</span>
             <span>/</span>
             <span className="text-emerald-400">CONTACT</span>
@@ -61,16 +45,16 @@ export function ContactPage() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-center text-gray-300 mb-16 max-w-3xl mx-auto"
+          className="text-center text-muted-foreground mb-16 max-w-3xl mx-auto"
         >
-          Have a question or want to discuss something? I&apos;d love to hear from you and see how I can
-          help. Whether it&apos;s about a project, collaboration, or just a friendly chat.
+          궁금한 점이 있거나 함께 이야기 나누고 싶은 주제가 있다면 편하게 연락 주세요.<br></br>
+          프로젝트 협업, 커리어 관련 대화, 혹은 가벼운 안부도 언제든 환영합니다.
         </motion.p>
 
         {/* How To Connect Section */}
         <div className="relative">
           {/* Download Contact Button */}
-          <motion.div
+          {/* <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -80,10 +64,10 @@ export function ContactPage() {
               <Download className="w-4 h-4" />
               <span>Download Contact</span>
             </button>
-            <button className="text-gray-400 hover:text-emerald-400 text-sm transition-colors">
+            <button className="text-muted-foreground hover:text-emerald-400 text-sm transition-colors">
               View as JSON
             </button>
-          </motion.div>
+          </motion.div> */}
 
           <motion.div
             initial={{ y: 20, opacity: 0 }}
@@ -91,8 +75,8 @@ export function ContactPage() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="mb-12"
           >
-            <h2 className="text-white mb-2">How To Connect</h2>
-            <p className="text-gray-400 text-sm">Let&apos;s start a conversation one day.</p>
+            <h2 className="text-foreground mb-2">연락 방법</h2>
+            <p className="text-muted-foreground text-sm">언제든 편하게 연락 주세요.</p>
           </motion.div>
 
           {/* Contact Methods Grid */}
@@ -110,7 +94,7 @@ export function ContactPage() {
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                  className="group relative bg-[#1a1f2e] border border-white/10 rounded-2xl p-6 hover:border-emerald-500/50 transition-all duration-300"
+                  className="group relative bg-card border border-border rounded-2xl p-6 hover:border-emerald-500/50 transition-all duration-300"
                 >
                   <div className="flex items-start justify-between gap-4">
                     {/* Left side - Icon and Info */}
@@ -119,15 +103,17 @@ export function ContactPage() {
                         <Icon className="w-6 h-6" />
                       </div>
                       <div className="flex-1">
-                        <p className="text-gray-400 text-sm mb-1">{method.label}</p>
-                        <p className="text-white mb-0">{method.value}</p>
+                        <p className="text-muted-foreground text-sm mb-1">{method.label}</p>
+                        <p className="text-foreground mb-0">{method.value}</p>
                       </div>
                     </div>
 
                     {/* Right side - Action Button */}
                     <a
                       href={method.link}
-                      className="px-4 py-2 bg-white/5 hover:bg-emerald-500/10 text-gray-300 hover:text-emerald-400 rounded-lg transition-all duration-300 border border-white/10 hover:border-emerald-500/50 whitespace-nowrap text-sm"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 bg-muted/50 hover:bg-emerald-500/10 text-muted-foreground hover:text-emerald-400 rounded-lg transition-all duration-300 border border-border hover:border-emerald-500/50 whitespace-nowrap text-sm"
                     >
                       {method.action}
                     </a>
@@ -145,8 +131,8 @@ export function ContactPage() {
           transition={{ duration: 0.5, delay: 0.9 }}
           className="mt-16 text-center"
         >
-          <p className="text-gray-400 text-sm">
-            Usually respond within 24 hours. Looking forward to connecting with you!
+          <p className="text-muted-foreground text-sm">
+            보통 24시간 이내에 답변드립니다. 연락 기다리겠습니다!
           </p>
         </motion.div>
       </div>

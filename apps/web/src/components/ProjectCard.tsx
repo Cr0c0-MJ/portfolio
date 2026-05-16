@@ -11,7 +11,7 @@ interface Project {
   description: string;
   image: string;
   technologies: string[];
-  badge: number;
+  link: string;
 }
 
 interface ProjectCardProps {
@@ -25,13 +25,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative bg-[#1a1f2e] border border-white/10 rounded-2xl overflow-hidden hover:border-emerald-500/50 transition-all duration-300"
+      className="group relative bg-card border border-border rounded-2xl overflow-hidden hover:border-emerald-500/50 transition-all duration-300"
     >
-      {/* Badge */}
-      <div className="absolute top-4 left-4 z-10 w-12 h-12 rounded-full bg-[#0f1419]/90 border border-emerald-500/50 flex items-center justify-center backdrop-blur-sm">
-        <span className="text-emerald-400">{project.badge}</span>
-      </div>
-
       {/* Image */}
       <div className="relative h-48 overflow-hidden bg-gradient-to-br from-emerald-500/10 to-blue-500/10">
         <ImageWithFallback
@@ -39,17 +34,17 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           alt={project.title}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1a1f2e] to-transparent opacity-60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent opacity-60" />
       </div>
 
       {/* Content */}
       <div className="p-6">
         {/* Title and Date */}
         <div className="flex items-start justify-between mb-2">
-          <h3 className="text-white group-hover:text-emerald-400 transition-colors">
+          <h3 className="text-foreground group-hover:text-emerald-400 transition-colors">
             {project.title}
           </h3>
-          <span className="text-gray-500 text-sm whitespace-nowrap ml-2">{project.date}</span>
+          <span className="text-muted-foreground text-sm whitespace-nowrap ml-2">{project.date}</span>
         </div>
 
         {/* Category */}
@@ -58,7 +53,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         </div>
 
         {/* Description */}
-        <p className="text-gray-400 text-sm mb-4 line-clamp-3">{project.description}</p>
+        <p className="text-muted-foreground text-sm mb-4 line-clamp-3">{project.description}</p>
 
         {/* Technologies */}
         <div className="flex flex-wrap gap-2 mb-4">
@@ -71,17 +66,22 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             </span>
           ))}
           {project.technologies.length > 4 && (
-            <span className="px-3 py-1 bg-white/5 text-gray-400 text-xs rounded-full border border-white/10">
+            <span className="px-3 py-1 bg-muted/50 text-muted-foreground text-xs rounded-full border border-border">
               +{project.technologies.length - 4}
             </span>
           )}
         </div>
 
         {/* View Project Link */}
-        <button className="flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors text-sm group/link">
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors text-sm group/link"
+        >
           <span>View Project</span>
           <ExternalLink className="w-4 h-4 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
-        </button>
+        </a>
       </div>
     </motion.div>
   );
