@@ -97,7 +97,8 @@ services:
     depends_on:
       - api
     networks:
-      - internal
+      - internal  # api 컨테이너 접근용
+      - edge      # Grafana Cloud 외부 전송용
 
 volumes:
   db_data:
