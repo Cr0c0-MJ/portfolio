@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'motion/react';
-import { User } from 'lucide-react';
+import { User, Briefcase } from 'lucide-react';
 
 export function AboutPage() {
   return (
@@ -73,14 +73,37 @@ export function AboutPage() {
           </div>
         </motion.div>
 
-        {/* Additional Sections Placeholder */}
+        {/* Career Section */}
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.4 }}
           className="space-y-8"
         >
-          {/* You can add more sections here */}
+          <div>
+            <h2 className="text-foreground mb-2">경력</h2>
+            <p className="text-muted-foreground text-sm mb-8">지금까지 걸어온 길</p>
+
+            <div className="border-l-2 border-emerald-500 pl-6 space-y-8">
+              <div>
+                <div className="flex items-center gap-2 text-emerald-400 mb-1">
+                  <Briefcase className="w-4 h-4" />
+                  <span className="font-medium">(주)아인스에스엔씨</span>
+                </div>
+                <p className="text-foreground/60 text-sm mb-3">
+                  Digital Twin 기술팀 · 연구원 (소프트웨어 엔지니어) &nbsp;|&nbsp; 2025.06 ~ 현재
+                </p>
+                <ul className="space-y-2 text-foreground/80 text-sm leading-relaxed list-disc list-inside">
+                  <li>
+                    디지털트윈 기반 시뮬레이션 모델 설계 및 구현
+                  </li>
+                  <li>
+                    방위산업 선도 기업과의 협업을 통해 복잡계 시스템의 디지털트윈 적용 연구 수행
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </motion.div>
       </div>
     </div>
