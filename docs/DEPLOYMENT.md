@@ -387,19 +387,44 @@ http:
 
 ---
 
-## GitHub Actions clone 시 인증 방법
+## PAT(Personal Access Token) 관리
 
-GitHub는 2021년부터 비밀번호 인증을 폐지했습니다. PAT(Personal Access Token)를 사용해야 합니다.
+GitHub는 2021년부터 비밀번호 인증을 폐지했습니다. 용도별로 PAT를 구분해서 사용합니다.
+
+### PAT 발급 위치
+
+**GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token**
+
+### 용도별 권한
+
+| 용도 | 필요 권한 | 사용 위치 |
+|------|-----------|-----------|
+| 서버에서 repo clone / git pull | `repo` | VPS에서 최초 clone 시 |
+| 서버에서 GHCR 이미지 pull | `read:packages` | VPS에서 `docker login ghcr.io` |
+
+### PAT 저장 위치
+
+- **발급 직후에만 값이 표시됨** — 반드시 그 자리에서 복사해 안전한 곳에 보관
+- 분실 시: 해당 토큰 삭제 후 재발급
+
+### GHCR 로그인 (VPS에서 이미지 pull 전 1회 필요)
+
+```bash
+echo "[PAT_read:packages_권한]" | docker login ghcr.io -u Cr0c0-MJ --password-stdin
+# Login Succeeded 확인
+```
+
+로그인 정보는 `~/.docker/config.json`에 저장되므로 **1회만 실행**하면 됩니다.
+
+### 서버 최초 clone
 
 ```bash
 # 잘못된 방법 (비밀번호 입력 → 실패)
 git clone https://github.com/Cr0c0-MJ/portfolio.git
 
-# 올바른 방법 (PAT 포함)
-git clone https://Cr0c0-MJ:[PAT]@github.com/Cr0c0-MJ/portfolio.git
+# 올바른 방법 (PAT 포함, repo 권한 필요)
+git clone https://Cr0c0-MJ:[PAT_repo_권한]@github.com/Cr0c0-MJ/portfolio.git
 ```
-
-PAT 발급: GitHub → Settings → Developer settings → Personal access tokens → `repo` 권한 체크
 
 ---
 
