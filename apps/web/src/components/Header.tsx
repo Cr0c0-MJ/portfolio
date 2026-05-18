@@ -6,15 +6,18 @@ import {
   FolderOpen,
   Sun,
   Moon,
-  Globe,
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
 
 export function Header() {
   const pathname = usePathname();
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
 
   const navItems = [
     { icon: Home, label: 'Home', path: '/' },
@@ -56,9 +59,9 @@ export function Header() {
           {/* Theme and Language toggles */}
           <button
             className="p-2 hover:bg-black/10 dark:hover:bg-white/10 rounded-lg transition-colors"
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
           >
-            {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            {mounted && (resolvedTheme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />)}
           </button>
         </nav>
       </div>
