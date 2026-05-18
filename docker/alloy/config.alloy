@@ -1,0 +1,26 @@
+// ─────────────────────────────────────────────
+// Grafana Alloy config
+// Scrapes NestJS API metrics and forwards to Grafana Cloud.
+// ─────────────────────────────────────────────
+
+// NestJS API 메트릭 수집
+prometheus.scrape "nestjs_api" {
+  targets = [{
+    __address__ = "api:4000",
+  }]
+  metrics_path    = "/metrics"
+  scrape_interval = "15s"
+  forward_to      = [prometheus.remote_write.grafana_cloud.receiver]
+}
+
+// Grafana Cloud로 전송
+prometheus.remote_write "grafana_cloud" {
+  endpoint {
+    url = env("GRAFANA_REMOTE_WRITE_URL")
+
+    basic_auth {
+      username = env("GRAFANA_USERNAME")
+      password = env("GRAFANA_API_TOKEN")
+    }
+  }
+}
