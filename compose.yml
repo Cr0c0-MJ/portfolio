@@ -51,5 +51,15 @@ services:
     ports:
       - '3000:3000'
 
+  alloy:
+    image: grafana/alloy:latest
+    restart: unless-stopped
+    volumes:
+      - ./docker/alloy/config.alloy:/etc/alloy/config.alloy
+    command: run --server.http.listen-addr=0.0.0.0:12345 /etc/alloy/config.alloy
+    env_file: .env
+    depends_on:
+      - api
+
 volumes:
   db_data:
