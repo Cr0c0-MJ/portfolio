@@ -75,4 +75,5 @@ Point `A` records for `@`, `www`, `api` to the VPS IP. Traefik auto-provisions L
 ## Troubleshooting
 - **`acme.json` permission error**: `touch acme.json && chmod 600 acme.json` inside `docker/traefik/letsencrypt/`.
 - **Prisma client missing in container**: Dockerfile runs `prisma generate` in the builder stage; confirm `apps/api/prisma/` was copied.
+- **`@prisma/client did not initialize yet` (dev)**: `prisma generate`가 실행되지 않은 상태. `npm run prisma:migrate -w @portfolio/api` 실행 후 dev 서버 재시작. 또는 `npx prisma generate --schema=apps/api/prisma/schema.prisma` 단독 실행.
 - **Standalone Next.js can't find files**: ensure `next.config.mjs` has `output: 'standalone'` (already set).
