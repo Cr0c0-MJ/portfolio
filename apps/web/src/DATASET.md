@@ -80,113 +80,75 @@
 
 ## 💼 Projects 데이터셋
 
-총 **6개 프로젝트**
+총 **4개 프로젝트**
 
 ### 프로젝트 목록
 
-#### 1. AI Integration Platform
+#### 1. Portfolio
 ```javascript
 {
   id: 1,
-  title: 'AI Integration Platform',
-  date: 'October 2023',
-  category: 'Web App, SDK, API, Website, Docs',
-  description: 'A plug-and-play platform for integrating an AI-powered voice user interface (VUI) directly on top of existing applications. It is designed...',
-  image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop',
-  technologies: ['React', 'TypeScript', 'Node.js', 'LangChain', 'FastMCP', 'PineconeDB'],
-  badge: 31
+  title: 'Portfolio',
+  date: 'May 2025',
+  category: 'Web App, DevOps',
+  description: 'Next.js + NestJS 기반의 개인 포트폴리오 사이트. Turborepo 모노레포 구조, Prisma + PostgreSQL, Docker Compose, Traefik으로 HTTPS 자동 프로비저닝, GitHub Actions CI/CD를 통해 VPS에 자동 배포됩니다.',
+  image: portfolioImg.src,  // apps/web/src/assets/portfolio.png
+  technologies: ['Next.js', 'NestJS', 'TypeScript', 'Prisma', 'PostgreSQL', 'Docker', 'Turborepo'],
+  link: 'https://github.com/Cr0c0-MJ/portfolio'
 }
 ```
 
-#### 2. AI Sales Agent for Shopify
+#### 2. Zooflix
 ```javascript
 {
   id: 2,
-  title: 'AI Sales Agent for Shopify',
-  date: 'July 2025',
-  category: 'Shopify App',
-  description: 'A native app for Shopify stores that can be installed in minutes, delivering an assistant experience directly inside the merchant...',
-  image: 'https://images.unsplash.com/photo-1661956602116-aa6865609028?w=800&h=600&fit=crop',
-  technologies: ['NextJS', 'OpenAI', 'GraphQL', 'Shopify API'],
-  badge: 29
+  title: 'Zooflix',
+  date: 'February 2024',
+  category: 'Web App, FinTech',
+  description: '구독 경제 모델을 주식 투자에 접목한 플랫폼. 한국투자증권 API를 활용한 월별 자동 주식 매수, AI 기반 외국어 뉴스 번역·음성 합성, 주가 예측 커뮤니티 및 랭킹 기능을 제공합니다.',
+  image: zooflixImg.src,  // apps/web/src/assets/zooflix.png
+  technologies: ['React', 'TypeScript', 'Spring Boot', 'MySQL', 'Docker', 'AWS', 'Jenkins'],
+  link: 'https://github.com/Cr0c0-MJ/Zooflix'
 }
 ```
 
-#### 3. AI Browsing Assistant
+#### 3. Shortorial
 ```javascript
 {
   id: 3,
-  title: 'AI Browsing Assistant',
-  date: 'February 2024',
-  category: 'Browser Extension',
-  description: 'A browser extension that brings voice control and AI-powered assistance to your web browsing experience. This tool transforms...',
-  image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=600&fit=crop',
-  technologies: ['Plasmo', 'Ant Design', 'OpenAI', 'Chrome API'],
-  badge: 18
+  title: 'Shortorial',
+  date: 'April 2024',
+  category: 'Web App, AI',
+  description: '모션 인식 기반 댄스 학습 서비스. MediaPipe BlazePose를 활용한 실시간 포즈 유사도 분석으로 동작 정확도를 즉시 피드백하고, 챌린지 영상을 YouTube에 바로 업로드할 수 있습니다.',
+  image: shortorialImg.src,  // apps/web/src/assets/shortorial.png (imageContain: true)
+  imageContain: true,
+  technologies: ['React', 'TypeScript', 'Spring Boot', 'Python', 'MediaPipe', 'MySQL', 'Redis'],
+  link: 'https://github.com/Cr0c0-MJ/Shortorial'
 }
 ```
 
-#### 4. E-commerce Dashboard
+#### 4. ConGraduation
 ```javascript
 {
   id: 4,
-  title: 'E-commerce Dashboard',
-  date: 'March 2024',
-  category: 'Web App',
-  description: 'A comprehensive analytics dashboard for e-commerce businesses with real-time data visualization and insights...',
-  image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
-  technologies: ['React', 'TypeScript', 'GraphQL', 'D3.js'],
-  badge: 24
-}
-```
-
-#### 5. Mobile Fitness Tracker
-```javascript
-{
-  id: 5,
-  title: 'Mobile Fitness Tracker',
+  title: 'ConGraduation',
   date: 'January 2024',
-  category: 'Mobile App',
-  description: 'A React Native mobile application for tracking workouts, nutrition, and health metrics with personalized AI coaching...',
-  image: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=800&h=600&fit=crop',
-  technologies: ['React Native', 'Node.js', 'MongoDB', 'OpenAI'],
-  badge: 15
-}
-```
-
-#### 6. Content Management System
-```javascript
-{
-  id: 6,
-  title: 'Content Management System',
-  date: 'December 2023',
-  category: 'Web App, CMS',
-  description: 'A headless CMS built with modern technologies, offering flexible content modeling and powerful API...',
-  image: 'https://images.unsplash.com/photo-1432821596592-e2c18b78144f?w=800&h=600&fit=crop',
-  technologies: ['NextJS', 'PostgreSQL', 'GraphQL', 'Prisma'],
-  badge: 28
+  category: 'Web App',
+  description: '졸업을 축하하는 온라인 사진 롤링페이퍼 서비스. 4컷 형식의 졸업 사진에 메시지를 담아 친구들과 추억을 공유하고, 졸업 당일 이후 열람 및 ZIP 다운로드가 가능합니다.',
+  image: congraduationImg.src,  // apps/web/src/assets/congraduation.webp
+  technologies: ['React', 'Spring Boot', 'MySQL', 'AWS S3', 'WebSocket', 'Docker'],
+  link: 'https://github.com/Cr0c0-MJ/congraduation'
 }
 ```
 
 ### 기술 스택 통계
-- **React**: 3 프로젝트
-- **TypeScript**: 3 프로젝트
-- **Node.js**: 2 프로젝트
-- **GraphQL**: 3 프로젝트
-- **NextJS**: 2 프로젝트
-- **OpenAI**: 3 프로젝트
-- **LangChain**: 1 프로젝트
-- **FastMCP**: 1 프로젝트
-- **PineconeDB**: 1 프로젝트
-- **Shopify API**: 1 프로젝트
-- **Plasmo**: 1 프로젝트
-- **Ant Design**: 1 프로젝트
-- **Chrome API**: 1 프로젝트
-- **D3.js**: 1 프로젝트
-- **React Native**: 1 프로젝트
-- **MongoDB**: 1 프로젝트
+- **React / Next.js**: 4 프로젝트
+- **TypeScript**: 4 프로젝트
+- **Spring Boot**: 3 프로젝트
+- **Docker**: 4 프로젝트
+- **MySQL**: 3 프로젝트
 - **PostgreSQL**: 1 프로젝트
-- **Prisma**: 1 프로젝트
+- **AWS**: 2 프로젝트
 
 ---
 
@@ -444,9 +406,9 @@
 ## 📊 통계 요약
 
 - **총 페이지**: 5개
-- **총 프로젝트**: 6개
+- **총 프로젝트**: 4개
 - **총 블로그 포스트**: 8개
-- **사용된 기술 스택**: 18종
+- **사용된 기술 스택**: 14종
 - **연락 방법**: 4가지
 - **소셜 미디어 링크**: 3개
 

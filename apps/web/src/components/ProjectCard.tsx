@@ -10,6 +10,7 @@ interface Project {
   category: string;
   description: string;
   image: string;
+  imageContain?: boolean;
   technologies: string[];
   link: string;
 }
@@ -28,11 +29,11 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       className="group relative bg-card border border-border rounded-2xl overflow-hidden hover:border-emerald-500/50 transition-all duration-300"
     >
       {/* Image */}
-      <div className="relative h-48 overflow-hidden bg-gradient-to-br from-emerald-500/10 to-blue-500/10">
+      <div className={`relative h-48 overflow-hidden ${project.imageContain ? 'bg-white' : 'bg-gradient-to-br from-emerald-500/10 to-blue-500/10'}`}>
         <ImageWithFallback
           src={project.image}
           alt={project.title}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          className={`w-full h-full ${project.imageContain ? 'object-contain p-4' : 'object-cover group-hover:scale-110 transition-transform duration-500'}`}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent opacity-60" />
       </div>

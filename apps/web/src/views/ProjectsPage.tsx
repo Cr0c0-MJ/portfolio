@@ -2,6 +2,10 @@
 import { motion } from 'motion/react';
 import { useState } from 'react';
 import { ProjectCard } from '../components/ProjectCard';
+import zooflixImg from '../assets/zooflix.png';
+import shortorialImg from '../assets/shortorial.png';
+import portfolioImg from '../assets/portfolio.png';
+import congraduationImg from '../assets/congraduation.webp';
 
 interface Project {
   id: number;
@@ -10,6 +14,7 @@ interface Project {
   category: string;
   description: string;
   image: string;
+  imageContain?: boolean;
   technologies: string[];
   link: string;
 }
@@ -17,35 +22,43 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
+    title: 'Portfolio',
+    date: 'May 2025',
+    category: 'Web App, DevOps',
+    description: 'Next.js + NestJS 기반의 개인 포트폴리오 사이트. Turborepo 모노레포 구조, Prisma + PostgreSQL, Docker Compose, Traefik으로 HTTPS 자동 프로비저닝, GitHub Actions CI/CD를 통해 VPS에 자동 배포됩니다.',
+    image: portfolioImg.src,
+    technologies: ['Next.js', 'NestJS', 'TypeScript', 'Prisma', 'PostgreSQL', 'Docker', 'Turborepo'],
+    link: 'https://github.com/Cr0c0-MJ/portfolio',
+  },
+  {
+    id: 2,
     title: 'Zooflix',
     date: 'February 2024',
     category: 'Web App, FinTech',
     description: '구독 경제 모델을 주식 투자에 접목한 플랫폼. 한국투자증권 API를 활용한 월별 자동 주식 매수, AI 기반 외국어 뉴스 번역·음성 합성, 주가 예측 커뮤니티 및 랭킹 기능을 제공합니다.',
-    image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=600&fit=crop',
+    image: zooflixImg.src,
     technologies: ['React', 'TypeScript', 'Spring Boot', 'MySQL', 'Docker', 'AWS', 'Jenkins'],
-
     link: 'https://github.com/Cr0c0-MJ/Zooflix',
   },
   {
-    id: 2,
+    id: 3,
     title: 'Shortorial',
     date: 'April 2024',
     category: 'Web App, AI',
     description: '모션 인식 기반 댄스 학습 서비스. MediaPipe BlazePose를 활용한 실시간 포즈 유사도 분석으로 동작 정확도를 즉시 피드백하고, 챌린지 영상을 YouTube에 바로 업로드할 수 있습니다.',
-    image: 'https://images.unsplash.com/photo-1535525153412-5a42439a210d?w=800&h=600&fit=crop',
+    image: shortorialImg.src,
+    imageContain: true,
     technologies: ['React', 'TypeScript', 'Spring Boot', 'Python', 'MediaPipe', 'MySQL', 'Redis'],
-
     link: 'https://github.com/Cr0c0-MJ/Shortorial',
   },
   {
-    id: 3,
+    id: 4,
     title: 'ConGraduation',
     date: 'January 2024',
     category: 'Web App',
     description: '졸업을 축하하는 온라인 사진 롤링페이퍼 서비스. 4컷 형식의 졸업 사진에 메시지를 담아 친구들과 추억을 공유하고, 졸업 당일 이후 열람 및 ZIP 다운로드가 가능합니다.',
-    image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=600&fit=crop',
+    image: congraduationImg.src,
     technologies: ['React', 'Spring Boot', 'MySQL', 'AWS S3', 'WebSocket', 'Docker'],
-
     link: 'https://github.com/Cr0c0-MJ/congraduation',
   },
 ];
