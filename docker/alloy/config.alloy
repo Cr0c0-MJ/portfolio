@@ -7,9 +7,12 @@
 // ───── Metrics ──────────────────────────────────
 
 // NestJS API 메트릭 수집 (Node 런타임 + HTTP 카운터)
+// target에 job 라벨을 명시해 컴포넌트 경로(prometheus.scrape.nestjs_api) 대신
+// 깔끔한 "nestjs_api" 로 들어가도록 함.
 prometheus.scrape "nestjs_api" {
   targets = [{
     __address__ = "api:4000",
+    job         = "nestjs_api",
   }]
   metrics_path    = "/metrics"
   scrape_interval = "15s"
