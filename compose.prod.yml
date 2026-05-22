@@ -32,12 +32,15 @@ services:
       - --certificatesresolvers.le.acme.tlschallenge=true
       - --log.level=INFO
       - --accesslog=true
+      - --accesslog.format=json
+      - --accesslog.filepath=/var/log/traefik/access.log
     ports:
       - '80:80'
       - '443:443'
     volumes:
       - ./docker/traefik/dynamic:/etc/traefik/dynamic:ro
       - ./docker/traefik/letsencrypt:/letsencrypt
+      - traefik_logs:/var/log/traefik
     networks:
       - edge
 
@@ -89,11 +92,14 @@ services:
     restart: unless-stopped
     volumes:
       - ./docker/alloy/config.alloy:/etc/alloy/config.alloy
+      - traefik_logs:/var/log/traefik:ro
     command: run --server.http.listen-addr=0.0.0.0:12345 /etc/alloy/config.alloy
     environment:
       GRAFANA_REMOTE_WRITE_URL: ${GRAFANA_REMOTE_WRITE_URL}
       GRAFANA_USERNAME: ${GRAFANA_USERNAME}
       GRAFANA_API_TOKEN: ${GRAFANA_API_TOKEN}
+      LOKI_PUSH_URL: ${LOKI_PUSH_URL}
+      LOKI_USERNAME: ${LOKI_USERNAME}
     depends_on:
       - api
     networks:
@@ -102,3 +108,4 @@ services:
 
 volumes:
   db_data:
+  traefik_logs:

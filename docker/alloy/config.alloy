@@ -1,9 +1,12 @@
 // ─────────────────────────────────────────────
 // Grafana Alloy config
-// Scrapes NestJS API metrics and forwards to Grafana Cloud.
+// - Scrapes NestJS API metrics → Grafana Cloud Prometheus
+// - Tails Traefik access log    → Grafana Cloud Loki
 // ─────────────────────────────────────────────
 
-// NestJS API 메트릭 수집
+// ───── Metrics ──────────────────────────────────
+
+// NestJS API 메트릭 수집 (Node 런타임 + HTTP 카운터)
 prometheus.scrape "nestjs_api" {
   targets = [{
     __address__ = "api:4000",
@@ -13,13 +16,60 @@ prometheus.scrape "nestjs_api" {
   forward_to      = [prometheus.remote_write.grafana_cloud.receiver]
 }
 
-// Grafana Cloud로 전송
+// Grafana Cloud Prometheus로 전송
 prometheus.remote_write "grafana_cloud" {
   endpoint {
     url = env("GRAFANA_REMOTE_WRITE_URL")
 
     basic_auth {
       username = env("GRAFANA_USERNAME")
+      password = env("GRAFANA_API_TOKEN")
+    }
+  }
+}
+
+// ───── Logs ─────────────────────────────────────
+
+// Traefik access log (JSON) tail
+loki.source.file "traefik_access" {
+  targets = [{
+    __path__ = "/var/log/traefik/access.log",
+    job      = "traefik",
+    service  = "traefik-access",
+  }]
+  forward_to = [loki.process.traefik_access.receiver]
+}
+
+// JSON 파싱 → 주요 필드를 라벨로 승격
+loki.process "traefik_access" {
+  stage.json {
+    expressions = {
+      status      = "DownstreamStatus",
+      method      = "RequestMethod",
+      router      = "RouterName",
+      service     = "ServiceName",
+      duration_ms = "Duration",
+    }
+  }
+
+  stage.labels {
+    values = {
+      status = "",
+      method = "",
+      router = "",
+    }
+  }
+
+  forward_to = [loki.write.grafana_cloud.receiver]
+}
+
+// Grafana Cloud Loki로 전송
+loki.write "grafana_cloud" {
+  endpoint {
+    url = env("LOKI_PUSH_URL")
+
+    basic_auth {
+      username = env("LOKI_USERNAME")
       password = env("GRAFANA_API_TOKEN")
     }
   }

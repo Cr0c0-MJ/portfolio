@@ -1,0 +1,67 @@
+# ─────────────────────────────────────────────────────────────
+# Prometheus alert rules (Grafana Cloud Mimir 호환)
+#
+# 적용 방법 (택 1):
+#   A. Grafana Cloud UI → Alerts & IRM → Alert rules → "Import" 후 본 파일 업로드
+#   B. mimirtool 로 sync (CI 자동화 가능)
+#      mimirtool rules sync --address=<MIMIR_URL> --id=<TENANT_ID> \
+#        --key=<API_TOKEN> docs/monitoring/alert-rules.yml
+#
+# 알람 수신: Grafana Cloud Contact point "default-email" (zaq1308@gmail.com)
+# ─────────────────────────────────────────────────────────────
+
+groups:
+  - name: api-availability
+    interval: 30s
+    rules:
+      - alert: ApiInstanceDown
+        expr: up{job="nestjs_api"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "NestJS API instance is unreachable"
+          description: "Alloy가 2분 이상 api:4000/metrics 를 긁어오지 못함. 컨테이너 다운 또는 네트워크 단절."
+
+      - alert: HighEventLoopLag
+        expr: nodejs_eventloop_lag_seconds > 0.2
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Node.js event loop lag > 200ms (5m)"
+          description: "이벤트 루프가 막혀 있음. 동기 작업 / CPU 과부하 / GC 압박 확인."
+
+      - alert: HighProcessMemory
+        expr: process_resident_memory_bytes / 1024 / 1024 > 400
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "API process RSS > 400MB (10m)"
+          description: "t3.micro(1GB) 환경에서 메모리 누수 가능성. 힙 덤프 확인 권장."
+
+  - name: traefik-edge
+    interval: 30s
+    rules:
+      - alert: High5xxErrorRate
+        expr: |
+          sum(rate(traefik_service_requests_total{code=~"5.."}[5m]))
+            /
+          sum(rate(traefik_service_requests_total[5m]))
+            > 0.05
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "5xx 응답률이 5%를 초과 (5m)"
+          description: "엣지에서 본 서버 오류율 임계 초과. API 로그 + Loki 'traefik' job 확인."
+
+      - alert: TraefikNoTraffic
+        expr: sum(rate(traefik_service_requests_total[10m])) == 0
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: "15분 동안 외부 트래픽이 0"
+          description: "트래픽이 정상적으로 도달하지 않거나 DNS / 인증서 문제 가능성. 직접 https://crocoportfolio.com 접속 확인."
