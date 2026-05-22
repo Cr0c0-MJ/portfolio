@@ -88,13 +88,15 @@ sum by (request_Referer) (
 
 규칙 파일: [`docs/monitoring/alert-rules.yml`](monitoring/alert-rules.yml)
 
-| 알람 | 조건 | 심각도 |
-|---|---|---|
-| `ApiInstanceDown` | `up{job="nestjs_api"} == 0` 2분 지속 | critical |
-| `HighEventLoopLag` | event loop lag > 200ms 5분 지속 | warning |
-| `HighProcessMemory` | API RSS > 400MB 10분 지속 | warning |
-| `High5xxErrorRate` | Traefik 5xx 비율 > 5% 5분 지속 | critical |
-| `TraefikNoTraffic` | 15분간 요청 0건 | warning |
+| 알람 | 조건 | 심각도 | 운영 상태 |
+|---|---|---|---|
+| `ApiInstanceDown` | `up{job="nestjs_api"} == 0` 2분 지속 | critical | ✅ 운영 중 |
+| `HighEventLoopLag` | event loop lag > 200ms 5분 지속 | warning | ✅ 운영 중 |
+| `HighProcessMemory` | API RSS > 400MB 10분 지속 | warning | ✅ 운영 중 |
+| `High5xxErrorRate` | Traefik 5xx 비율 > 5% 5분 지속 | critical | ⏸ Traefik metrics 활성화 시 |
+| `TraefikNoTraffic` | 15분간 요청 0건 | warning | ⏸ Traefik metrics 활성화 시 |
+
+> 5xx/NoTraffic 알람은 [`compose.prod.yml`](../compose.prod.yml)의 traefik 서비스에 `--metrics.prometheus=true` 등 메트릭 엔드포인트를 활성화한 뒤 추가할 수 있습니다.
 
 ### Grafana Cloud에 적용
 
@@ -106,6 +108,18 @@ sum by (request_Referer) (
    Alerts & IRM → Alert rules → "More" → "Import alert rules from .yaml" → 본 파일 업로드
 4. **알람 테스트**
    `ApiInstanceDown` 동작 확인: `docker compose -f compose.prod.yml stop api` → 약 2분 뒤 메일 수신 → `start api`
+
+### 동작 검증 — 실제 알람 수신 기록
+
+`docker compose stop api` 로 API를 의도적으로 다운시켜 알람 사이클을 검증한 결과.
+
+| Firing | Resolved |
+|---|---|
+| ![Firing alert email](images/alert-firing.png) | ![Resolved alert email](images/alert-resolved.png) |
+
+- API 다운 후 약 2분 뒤 `[FIRING] DatasourceNoData` 메일 도착 (Alloy가 `api:4000/metrics`를 못 긁어와 NoData 상태로 전환됨)
+- `docker compose start api` 직후 약 1분 뒤 `[RESOLVED]` 메일 자동 도착
+- Description 한국어 본문, Labels(`rulename`, `severity` 등)까지 그대로 표시되어 운영자가 즉시 원인 파악 가능
 
 ---
 
