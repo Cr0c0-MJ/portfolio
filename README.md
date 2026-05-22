@@ -125,6 +125,12 @@ Docker 27의 API 호환성 문제로 Docker 소켓 기반 서비스 디스커버
 - **deploy.yml**: main 브랜치 push 시 멀티 스테이지 Docker 빌드 → GHCR push → SSH 배포 자동화
 - GHCR 이미지명은 반드시 소문자여야 함 → `cr0c0-mj/portfolio-web` 으로 하드코딩
 
+<p align="center">
+  <img src="docs/images/github-actions.png" alt="GitHub Actions deploy history — main 브랜치 push 시 자동 빌드·배포 성공 이력" width="780">
+</p>
+
+> 모든 main 브랜치 푸시가 자동 빌드 → GHCR push → VPS SSH 배포까지 성공한 이력. 기능 변경(`feat`) / 버그 수정(`fix`) / PR 머지 모두 동일 파이프라인을 통과합니다.
+
 ### 3. Next.js App Router + 모노레포 구조 주의사항
 `src/pages/` 디렉토리가 존재하면 Next.js가 Pages Router로 인식합니다. App Router와 충돌을 피하기 위해 뷰 컴포넌트 폴더를 `src/views/`로 명명했습니다.
 
