@@ -76,14 +76,14 @@ export function ProjectsPage() {
       : projects.filter((project) => project.technologies.includes(selectedTech));
 
   return (
-    <div className="relative z-10 px-8 py-16">
+    <div className="relative z-10 px-4 sm:px-8 py-10 sm:py-16">
       <div className="max-w-7xl mx-auto">
         {/* Page Title */}
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-8"
+          className="text-center mb-6 sm:mb-8"
         >
           <h1 className="text-emerald-400 mb-4">Projects</h1>
           <div className="flex items-center justify-center gap-2 text-muted-foreground text-sm">
@@ -98,9 +98,9 @@ export function ProjectsPage() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto"
+          className="text-center text-muted-foreground mb-8 sm:mb-12 max-w-3xl mx-auto text-sm sm:text-base px-2"
         >
-          방문해 주셔서 감사합니다. 아래는 제가 진행한 {projects.length}개의 공개 프로젝트입니다.<br></br>
+          방문해 주셔서 감사합니다. 아래는 제가 진행한 {projects.length}개의 공개 프로젝트입니다.<br className="hidden sm:block" />
           각각의 프로젝트는 성장의 발판이 되었고, 매번 새로운 것을 배우는 계기가 되었습니다.
         </motion.p>
 
@@ -109,17 +109,17 @@ export function ProjectsPage() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex items-center justify-center gap-3 mb-12 flex-wrap"
+          className="flex items-center justify-center gap-2 mb-8 sm:mb-12 flex-wrap"
         >
           <button
             onClick={() => setSelectedTech('All')}
-            className={`px-4 py-2 rounded-lg transition-all ${
+            className={`px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm rounded-lg transition-all ${
               selectedTech === 'All'
                 ? 'bg-emerald-500 text-white'
                 : 'bg-muted/50 text-muted-foreground hover:bg-accent hover:text-foreground'
             }`}
           >
-            All Projects ({projects.length})
+            All ({projects.length})
           </button>
           {allTechnologies.map((tech) => {
             const count = projects.filter((p) => p.technologies.includes(tech)).length;
@@ -127,7 +127,7 @@ export function ProjectsPage() {
               <button
                 key={tech}
                 onClick={() => setSelectedTech(tech)}
-                className={`px-4 py-2 rounded-lg transition-all ${
+                className={`px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm rounded-lg transition-all ${
                   selectedTech === tech
                     ? 'bg-emerald-500 text-white'
                     : 'bg-muted/50 text-muted-foreground hover:bg-accent hover:text-foreground'
@@ -144,7 +144,7 @@ export function ProjectsPage() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
         >
           {filteredProjects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
