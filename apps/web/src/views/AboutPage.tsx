@@ -4,14 +4,14 @@ import { User, Briefcase } from 'lucide-react';
 
 export function AboutPage() {
   return (
-    <div className="relative z-10 px-8 py-16">
+    <div className="relative z-10 px-4 sm:px-8 py-10 sm:py-16">
       <div className="max-w-4xl mx-auto">
         {/* Page Title */}
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-8"
+          className="text-center mb-6 sm:mb-8"
         >
           <h1 className="text-emerald-400 mb-4">About</h1>
           <div className="flex items-center justify-center gap-2 text-muted-foreground text-sm">
@@ -26,10 +26,10 @@ export function AboutPage() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-center text-muted-foreground mb-16 max-w-3xl mx-auto"
+          className="text-center text-muted-foreground mb-10 sm:mb-16 max-w-3xl mx-auto text-sm sm:text-base"
         >
           안녕하세요, 저는 Croco입니다.
-          <br></br>
+          <br />
           프론트엔드, 백엔드, 인프라를 넘나드는 풀스택 엔지니어이자, AI를 실무에 깊이 녹여낼 줄 아는 개발자입니다.
         </motion.p>
 
@@ -41,16 +41,16 @@ export function AboutPage() {
           className="mb-8"
         >
           <h2 className="text-foreground mb-2">자기 소개</h2>
-          <p className="text-muted-foreground text-sm mb-8">안녕하세요. 저를 소개하자면</p>
+          <p className="text-muted-foreground text-sm mb-6 sm:mb-8">안녕하세요. 저를 소개하자면</p>
 
           {/* Overview Tab */}
-          <div className="border-l-2 border-emerald-500 pl-6 mb-6">
+          <div className="border-l-2 border-emerald-500 pl-4 sm:pl-6 mb-6">
             <div className="flex items-center gap-2 text-emerald-400 mb-4">
-              <User className="w-4 h-4" />
-              <span>프로젝트 전반을 이해하는 개발자</span>
+              <User className="w-4 h-4 shrink-0" />
+              <span className="text-sm sm:text-base">프로젝트 전반을 이해하는 개발자</span>
             </div>
 
-            <div className="space-y-4 text-foreground/80 leading-relaxed">
+            <div className="space-y-4 text-foreground/80 leading-relaxed text-sm sm:text-base">
               <p>
                 저는 프론트엔드부터 백엔드, 인프라 구축, 배포 자동화까지 제품의 전 과정을 혼자 끌어갈 수 있는
                 풀스택 소프트웨어 엔지니어입니다. 팀의 규모나 역할 경계에 구애받지 않고, 필요한 곳에서
@@ -82,24 +82,20 @@ export function AboutPage() {
         >
           <div>
             <h2 className="text-foreground mb-2">경력</h2>
-            <p className="text-muted-foreground text-sm mb-8">지금까지 걸어온 길</p>
+            <p className="text-muted-foreground text-sm mb-6 sm:mb-8">지금까지 걸어온 길</p>
 
-            <div className="border-l-2 border-emerald-500 pl-6 space-y-8">
+            <div className="border-l-2 border-emerald-500 pl-4 sm:pl-6 space-y-8">
               <div>
                 <div className="flex items-center gap-2 text-emerald-400 mb-1">
-                  <Briefcase className="w-4 h-4" />
-                  <span className="font-medium">(주)아인스에스엔씨</span>
+                  <Briefcase className="w-4 h-4 shrink-0" />
+                  <span className="font-medium text-sm sm:text-base">(주)아인스에스엔씨</span>
                 </div>
-                <p className="text-foreground/60 text-sm mb-3">
-                  Digital Twin 기술팀 · 연구원 (소프트웨어 엔지니어) &nbsp;|&nbsp; 2025.06 ~ 현재
+                <p className="text-foreground/60 text-xs sm:text-sm mb-3">
+                  Digital Twin 기술팀 · 연구원 (소프트웨어 엔지니어)&nbsp;|&nbsp;2025.06 ~ 현재
                 </p>
                 <ul className="space-y-2 text-foreground/80 text-sm leading-relaxed list-disc list-inside">
-                  <li>
-                    디지털트윈 기반 시뮬레이션 모델 설계 및 구현
-                  </li>
-                  <li>
-                    방위산업 선도 기업과의 협업을 통해 복잡계 시스템의 디지털트윈 적용 연구 수행
-                  </li>
+                  <li>디지털트윈 기반 시뮬레이션 모델 설계 및 구현</li>
+                  <li>방위산업 선도 기업과의 협업을 통해 복잡계 시스템의 디지털트윈 적용 연구 수행</li>
                 </ul>
               </div>
             </div>
